@@ -9,7 +9,8 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       # same session, user can log in directly. aka: auto log in
-      redirect_to movies_path
+      redirect_to movies_path,
+        notice: "Welcome aboard, #{@user.firstname}!"
     else
       render :new
     end
