@@ -12,5 +12,12 @@ class SessionsController < ApplicationController
       flash.now[:alert] = "Log in failed..."
       render :new
     end
+
   end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to movies_path, notice: "Adios!"
+  end
+
 end
