@@ -20,7 +20,7 @@ class Movie < ApplicationRecord
 
   validate :release_date_is_in_the_past
 
-  protected
+  protected    
 
   def release_date_is_in_the_past
     if release_date.present?
