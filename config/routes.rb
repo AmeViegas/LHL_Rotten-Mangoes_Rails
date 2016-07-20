@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
-  resources :movies
-  root to: 'movies#index'
+  get 'reviews/new'
+
+  get 'reviews/create'
+
+  resources :movies do
+    resources :reviews, only: [:new, :create]
+  end
+  resources :users, only: [:new, :create]
+  resources :sessions, only: [:new, :create, :destroy]
+  rout to: 'movies#index'
 end
