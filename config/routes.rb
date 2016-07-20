@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
-  rout to: 'movies#index'
+  root to: 'movies#index'
 end
