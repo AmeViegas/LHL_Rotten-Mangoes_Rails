@@ -1,0 +1,7 @@
+<h1> Admin User Management </h1>
+<% @users.each do |user| %>
+  <p> User:  <%=user.firstname %> &nbsp; <%=user.lastname %> </p>
+  <p> email: <%=user.email %> </p>
+  <p> create date: <%= formatted_date(user.created_at) %> </p>
+  <p> update date: <%= formatted_date(user.updated_at) %> </p>
+<% end %>
