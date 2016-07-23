@@ -1,8 +1,10 @@
-<h1> Admin User Management </h1>
+<h1> Admin Users Management </h1>
+<h2> List of users </h2>
 <%= paginate @users %>
 <% @users.each do |user| %>
-  <p> User:  <%=user.firstname %> &nbsp; <%=user.lastname %> </p>
+  <p> User:  <%=link_to "#{user.full_name}", admin_user_path(user)%> </p>
   <p> email: <%=user.email %> </p>
   <p> create date: <%= formatted_date(user.created_at) %> </p>
   <p> update date: <%= formatted_date(user.updated_at) %> </p>
+  <p> Admin status: <%= user.admin %> </p>
 <% end %>
