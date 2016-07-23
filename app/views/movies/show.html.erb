@@ -5,8 +5,11 @@
 <%= image_tag @movie.image_url.to_s %>
 <h2>
     <%= @movie.title %>
-    (<%= link_to "edit", edit_movie_path(@movie) %>,
-    <%= link_to "delete", movie_path(@movie), method: :delete, confirm: "You sure?" %>)
+    
+    <% if current_user %>
+      (<%= link_to "edit", edit_movie_path(@movie) %>,
+      <%= link_to "delete", movie_path(@movie), method: :delete, data: {confirm: "Are you sure?"} %>)
+    <% end %>
 </h2>
 <h3><%= formatted_date(@movie.release_date) %></h3>
 <h4>Dir.
