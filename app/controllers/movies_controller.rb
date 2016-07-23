@@ -3,21 +3,7 @@
 class MoviesController < ApplicationController
 
   def index
-    if params[:commit] == "Search"
-      case params[:movie_len]
-      when "short"
-        @movies = Movie.find_title("%#{params[:title]}%").find_director("%#{params[:director]}%").short
-      when "medium"
-        @movies = Movie.find_title("%#{params[:title]}%").find_director("%#{params[:director]}%").medium
-      when "long"
-        @movies = Movie.find_title("%#{params[:title]}%").find_director("%#{params[:director]}%").long
-      else
-        @movies = Movie.find_title("%#{params[:title]}%").find_director("%#{params[:director]}%")
-      end
-    else
-      @movies = Movie.all.page(params[:page]).per(1)
-    end
-
+    @movies = MovieSearchService.search(params).page(params[:page]).per(2)
   end
 
   def show

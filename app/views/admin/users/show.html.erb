@@ -1,0 +1,9 @@
+<h1> Admin User Management </h1>
+ <p> First Name:  <%=@user.firstname %> </p> <p> Last Name: <%=@user.lastname %> </p>
+  <p> email: <%=@user.email %> </p>
+  <p> create date: <%= formatted_date(@user.created_at) %> </p>
+  <p> update date: <%= formatted_date(@user.updated_at) %>
+ </p>
+ <p> Admin status: <%= @user.admin %> </p>
+<p> <%=link_to "edit", edit_admin_user_path(@user) %> </p>
+<!-- % link_to "delete", admin_user_path(@user), method: :delete, :confirm: "You sure?" %> -->

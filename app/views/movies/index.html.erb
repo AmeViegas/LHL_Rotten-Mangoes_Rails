@@ -2,27 +2,32 @@
 <%= link_to "Submit a movie!", new_movie_path %>
 <hr>
 <%= form_tag movies_path, method: "get" do %>
-  <%= text_field_tag(:title, nil, placeholder: "Search by title") %>
-  <%= text_field_tag(:director, nil, placeholder: "Search by director") %>
+<%= text_field_tag(:title, nil, placeholder: "Search by title") %>
+<%= text_field_tag(:director, nil, placeholder: "Search by director") %>
 <select name="movie_len">
-  <option value="all">  </option>
-  <option value="short">Under 90 minutes</option>
-  <option value="medium">Between 90 and 120 minutes</option>
-  <option value="long">Over 120 minutes</option>
+    <option value="all"></option>
+    <option value="short">Under 90 minutes</option>
+    <option value="medium">Between 90 and 120 minutes</option>
+    <option value="long">Over 120 minutes</option>
 </select>
-  <%= submit_tag "Search" %>
+<%= submit_tag "Search" %>
 <% end %>
 <hr>
-<!-- %= paginate @movies %> -->
+
+<%= paginate @movies %>
 
 <% @movies.each do |movie| %>
-  <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
+<%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
 
-  <%= image_tag movie.image_url.to_s %>
-  <!-- %= image_tag movie.image_url(:thumb) %> -->
-    <h2><%= link_to movie.title, movie_path(movie) %></h2>
-  <h3><%= formatted_date(movie.release_date) %></h3>
-  <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-  <p><%= movie.description %></p>
-  <hr>
+<%= image_tag movie.image_url.to_s %>
+<!-- %= image_tag movie.image_url(:thumb) %> -->
+<h2><%= link_to movie.title, movie_path(movie) %></h2>
+<h3><%= formatted_date(movie.release_date) %></h3>
+<h4>Dir.
+    <%= movie.director %>
+    |
+    <%= movie.runtime_in_minutes %>
+    minutes</h4>
+<p><%= movie.description %></p>
+<hr>
 <% end %>

@@ -2,8 +2,8 @@ class Movie < ApplicationRecord
   has_many :reviews
 
   # activerecords scope
-  scope :find_title, -> (title) { where("title like ?", title) }
-  scope :find_director, -> (director) {where("director like ?", director)}
+  scope :with_title, -> (title) { where("title like ?", title) }
+  scope :with_director, -> (director) {where("director like ?", director)}
 
   scope :short, -> { where("runtime_in_minutes BETWEEN ? AND ?", "0","90") }
   scope :medium, -> { where("runtime_in_minutes BETWEEN ? AND ?", "90","120") }
