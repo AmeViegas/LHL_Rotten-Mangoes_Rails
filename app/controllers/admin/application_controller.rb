@@ -5,7 +5,10 @@ class Admin::ApplicationController < ApplicationController
   private
 
   def check_admin
-    # render text: "Not allowed", status: 401 
+    #
+    if !current_user.admin
+      render text: "Not allowed", status: 401
+    end
   end
 
 end
