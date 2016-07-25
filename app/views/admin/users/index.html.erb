@@ -8,3 +8,5 @@
   <p> update date: <%= formatted_date(user.updated_at) %> </p>
   <p> Admin status: <%= user.admin %> </p>
 <% end %>
+
+<%= link_to "create", new_admin_user_path %>
